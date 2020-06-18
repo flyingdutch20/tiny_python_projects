@@ -4,8 +4,8 @@
 import os
 from subprocess import getstatusoutput, getoutput
 
-prg = './hello.py'
-
+#prg = './hello.py'
+prg = "hello.py"
 
 # --------------------------------------------------
 def test_exists():
