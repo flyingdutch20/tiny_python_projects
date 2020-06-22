@@ -4,7 +4,7 @@
 import os
 from subprocess import getoutput
 
-prg = './picnic.py'
+prg = 'picnic.py'
 
 
 # --------------------------------------------------
@@ -45,9 +45,10 @@ def test_more_than_two():
 
     arg = '"potato chips" coleslaw cupcakes "French silk pie"'
     out = getoutput(f'{prg} {arg}')
+    strip = out.strip()
     expected = ('You are bringing potato chips, coleslaw, '
                 'cupcakes, and French silk pie.')
-    assert out.strip() == expected
+    assert strip == expected, print(strip)
 
 
 # --------------------------------------------------
