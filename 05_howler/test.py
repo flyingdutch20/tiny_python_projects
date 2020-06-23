@@ -7,7 +7,7 @@ import random
 import string
 from subprocess import getstatusoutput, getoutput
 
-prg = './howler.py'
+prg = 'howler.py'
 
 
 # --------------------------------------------------
@@ -85,8 +85,11 @@ def test_file():
             assert out.strip() == ''
             produced = open(out_file).read().rstrip()
             expected = open(os.path.join('test-outs',
-                                         expected_file)).read().strip()
+                                         expected_file)).read().rstrip()
             assert expected == produced
+            if AssertionError:
+                print('Expected: {}'.format(expected))
+                print('Produced: {}'.format(produced))
         finally:
             if os.path.isfile(out_file):
                 os.remove(out_file)
