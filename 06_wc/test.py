@@ -59,7 +59,7 @@ def test_empty():
     assert out.rstrip() == '       0       0       0 ./inputs/empty.txt'
 
 
-# --------------------------------------------------
+    # --------------------------------------------------
 def test_one():
     """Test on one"""
 
@@ -91,10 +91,11 @@ def test_more():
     """Test on more than one file"""
 
     rv, out = getstatusoutput(f'{prg} {fox} {sonnet}')
-    expected = ('       1       9      45 ../inputs/fox.txt\n'
-                '      17     118     661 ../inputs/sonnet-29.txt\n'
+    expected = ('       1       9      45 ../inputs/fox.txt'
+                '      17     118     661 ../inputs/sonnet-29.txt'
                 '      18     127     706 total')
     assert rv == 0
+    print(out.rstrip())
     assert out.rstrip() == expected
 
 

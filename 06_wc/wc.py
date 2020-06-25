@@ -7,6 +7,7 @@ Purpose: Count the words
 
 import argparse
 import sys
+import os
 
 
 # --------------------------------------------------
@@ -32,25 +33,20 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    total_lines = 0
-    total_words = 0
-    total_bytes = 0
+    total_lines, total_words, total_bytes = 0, 0, 0
     for fh in args.files:
-        my_words = 0
-        my_lines = 0
+        my_words, my_lines, my_bytes = 0, 0, 0
         for line in fh:
             my_lines += 1
-            my_words = my_words + len(line.split())
-        total_lines = total_lines + my_lines
-        total_words = total_words + my_words
-        total_bytes = total_bytes + bytes(fh)
-        print('{########} {########} {########} {}'.format(my_lines, my_words), bytes(fh), fh.name())
-    if len(fh) > 1:
-        print('{########} {########} {########} total'.format(total_lines, total_words), total_bytes)
+            my_words += len(line.split())
+            my_bytes += len(line)
+        total_lines += my_lines
+        total_words += my_words
+        total_bytes += my_bytes
+        print('{:8}{:8}{:8} {}'.format(my_lines, my_words, my_bytes, fh.name))
+    if len(args.files) > 1:
+        print('{:8}{:8}{:8} total'.format(total_lines, total_words, total_bytes))
 
-
-
-    print(file_list)
 
 # --------------------------------------------------
 if __name__ == '__main__':
