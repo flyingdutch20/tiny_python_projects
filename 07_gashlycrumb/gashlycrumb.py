@@ -17,7 +17,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('letters',
-                        metavar='str',
+                        metavar='letter',
                         nargs='+',
                         help='One or more letters')
 
@@ -38,13 +38,14 @@ def main():
     args = get_args()
 
     fh = args.file
-    lookup = {}
-    for line in fh:
-        if len(line.strip()) > 0:
-            lookup[line[0].upper()] = line.strip()
+#    lookup = {}
+#    for line in fh:
+#        if len(line.strip()) > 0:
+#            lookup[line[0].upper()] = line.strip()
+    lookup = { line[0].upper(): line.rstrip() for line in fh }
 
     for letter in args.letters:
-        print(lookup.get(letter.upper(), 'Sorry, no potato'))
+        print(lookup.get(letter.upper(), 'I do not know "{}".'.format(letter)))
 
 # --------------------------------------------------
 if __name__ == '__main__':
