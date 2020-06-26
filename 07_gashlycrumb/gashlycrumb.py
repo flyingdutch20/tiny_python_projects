@@ -16,8 +16,9 @@ def get_args():
         description="Return a name and a ghastly way to end",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('letter',
+    parser.add_argument('letters',
                         metavar='str',
+                        nargs='+',
                         help='One or more letters')
 
     parser.add_argument('-f',
@@ -36,7 +37,14 @@ def main():
 
     args = get_args()
 
+    fh = args.file
+    lookup = {}
+    for line in fh:
+        if len(line.strip()) > 0:
+            lookup[line[0].upper()] = line.strip()
 
+    for letter in args.letters:
+        print(lookup.get(letter.upper(), 'Sorry, no potato'))
 
 # --------------------------------------------------
 if __name__ == '__main__':
