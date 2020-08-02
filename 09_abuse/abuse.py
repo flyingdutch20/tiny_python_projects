@@ -70,6 +70,15 @@ def main():
                liar lunatic maw milksop minion ratcatcher recreant rogue scold slave swine traitor
                varlet villain worm""".split()
 
+    for _ in range(args.number):
+        adjs = ", ".join(random.sample(adjectives, k=args.adjectives))
+#        adjs = ""
+#        if args.adjectives > 1:
+#            for adj in random.sample(adjectives, args.adjectives)[:-1]:
+#                adjs = adjs + adj + ", "
+#            adjs = adjs + random.sample(adjectives, args.adjectives)[-1]
+        print("You {} {}!".format(adjs, random.choice(nouns)))
+
 
 # --------------------------------------------------
 if __name__ == '__main__':
