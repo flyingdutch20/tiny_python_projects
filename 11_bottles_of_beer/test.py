@@ -8,7 +8,7 @@ import re
 import string
 from subprocess import getstatusoutput
 
-prg = './bottles.py'
+prg = 'bottles.py'
 
 
 # --------------------------------------------------
@@ -25,7 +25,7 @@ def test_usage():
     for flag in ['-h', '--help']:
         rv, out = getstatusoutput(f'{prg} {flag}')
         assert rv == 0
-        assert re.match("usage", out, re.IGNORECASE)
+        assert re.match('usage', out, re.IGNORECASE)
 
 
 # --------------------------------------------------
